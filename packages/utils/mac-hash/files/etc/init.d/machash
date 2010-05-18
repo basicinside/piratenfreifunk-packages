@@ -1,0 +1,17 @@
+#!/bin/sh /etc/rc.common
+
+START=55
+
+start() {
+    sleep 8
+    start-stop-daemon -S -x /sbin/machash -- $OPTS
+}
+
+stop() {
+    start-stop-daemon -K -p /var/run/machash.pid
+}
+
+reload() { 
+    start-stop-daemon -K -s 1 -p /var/run/machash.pid
+} 
+

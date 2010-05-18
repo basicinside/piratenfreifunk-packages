@@ -1,0 +1,59 @@
+#!/bin/sh
+# versioncheck stolen from remote_update
+local D2='\([0-9]\{2\}\)'                                           
+local D4='\([0-9]\{4\}\)'                                           
+local NL='
+'
+find_local_version()
+{
+        if [ -f /rom/etc/banner ]; then
+                sed -ne "s!.*$D4/$D2/$D2 $D2:$D2.*!\\1\\2\\3\\4\\5!p;t" \
+                        /rom/etc/banner
+        else
+                date +"%Y%m%d%H%M" -r /bin/sh
+        fi
+}
+
+server=`uci get system.@pirate[0].heartbeatserver`
+node_id=`uci get system.@system[0].nodeid`
+mode=`uci get  freifunk.heartbeat.mode || echo highscore`
+
+
+if [ $node_id == "d41d8cd98f00b204e9800998ecf8427e" ]
+then
+uci set system.@system[0].nodeid=`ifconfig -a|md5sum |cut -f1 -d " "`
+node_id=`uci get system.@system[0].nodeid`
+fi
+
+
+#information data
+hostname="`uci get system.@system[0].hostname`"
+version="`find_local_version`"
+lat=`uci show olsrd|grep .lat=|cut -d = -f2`
+lon=`uci show olsrd|grep .lon=|cut -d = -f2`
+crew="`uci get freifunk.contact.crew`"
+lv="`uci get freifunk.contact.region`"
+
+#highscore data
+neighbours=`echo |nc 127.0.0.1 2006|grep YES|wc -l`
+clients=`cat /tmp/machashes|sort|uniq|wc -l`
+
+#reset client count
+rm /tmp/machashes
+
+if [ $mode == "update" ]
+then	
+wget -s "$server?node_id=$node_id&rev=$version"
+fi
+
+if [ $mode == "information" ]
+then	
+wget -s "$server?node_id=$node_id&name=$hostname&lat=$lat&lon=$lon&rev=$version&crew=$crew&lv=$lv"
+fi
+
+if [ $mode == "highscore" ]
+then	
+wget -s "$server?node_id=$node_id&name=$hostname&lat=$lat&lon=$lon&rev=$version&crew=$crew&lv=$lv&neighboors=$neighboors&clients=$clients"
+fi
+
+ 
