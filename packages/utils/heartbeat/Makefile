@@ -19,7 +19,7 @@ define Package/heartbeat
   SUBMENU:=Freifunk
   TITLE:=Heartbeat
   DEPENDS:=\
-  +node-id
+  +node-id \
   +mac-hash
 endef
 

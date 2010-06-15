@@ -18,7 +18,7 @@ define Package/mac-hash
   CATEGORY:=LuCI
   SUBMENU:=Freifunk
   TITLE:=MacHash
-  DEPENDS:=\
+  DEPENDS:=
 endef
 
 define Package/mac-hash/description
