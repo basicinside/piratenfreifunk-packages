@@ -17,7 +17,7 @@ define Package/luci-app-piraten-heartbeat
   TITLE:=Piraten heartbeat
   DEPENDS+= \
    +luci-web +luci-app-splash \
-   +piraten-heartbeat
+   +heartbeat
 endef
 
 define Package/luci-app-piraten-heartbeat/description
