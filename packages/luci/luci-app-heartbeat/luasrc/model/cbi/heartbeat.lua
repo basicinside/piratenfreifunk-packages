@@ -31,4 +31,13 @@ hbm.size=1
 uci:foreach("freifunk", "heartbeat_mode", function(s)
 	hbm:value(s[".name"], "%s (%s)" %{s.name, s.description})
 end)
+
+m = Map("system", "System")
+s = m:section(TypedSection, "system", "")
+s.anonymous = true
+s.addremove = false
+hn = s:option(Value, "nodeid", "Node ID")
+
+
+
 return m
