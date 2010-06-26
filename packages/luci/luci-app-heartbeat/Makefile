@@ -2,7 +2,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-piraten-heartbeat
+PKG_NAME:=luci-app-heartbeat
 PKG_VERSION:=0.0.1
 PKG_RELEASE:=1
 
@@ -10,7 +10,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/luci-app-piraten-heartbeat
+define Package/luci-app-heartbeat
   SECTION:=luci
   CATEGORY:=LuCI
   SUBMENU:=Components
@@ -20,7 +20,7 @@ define Package/luci-app-piraten-heartbeat
    +heartbeat
 endef
 
-define Package/luci-app-piraten-heartbeat/description
+define Package/luci-app-heartbeat/description
   Piraten heartbeat
 endef
 
@@ -34,9 +34,9 @@ endef
 define Build/Compile
 endef
 
-define Package/luci-app-piraten-heartbeat/install
+define Package/luci-app-heartbeat/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
 	$(CP) ./luasrc/* $(1)/usr/lib/lua/luci
 endef
 
-$(eval $(call BuildPackage,luci-app-piraten-heartbeat))
+$(eval $(call BuildPackage,luci-app-heartbeat))
