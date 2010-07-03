@@ -5,7 +5,7 @@ local D4='\([0-9]\{4\}\)'
 
 if [ `uci get manager.heartbeat.enabled` == "1" ]; then
 	#gather information
-	server=`uci get manager.heartbeat.server`
+	server=`uci get manager.server.url`
 	node_id=`uci get system.@system[0].nodeid`
 	hostname=`uci get system.@system[0].hostname`
 	version=`sed -ne "s!.*$D4/$D2/$D2 $D2:$D2.*!\\1\\2\\3\\4\\5!p;t" /rom/etc/banner`
