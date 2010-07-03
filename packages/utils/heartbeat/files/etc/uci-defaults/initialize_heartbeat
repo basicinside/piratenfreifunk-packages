@@ -3,8 +3,9 @@
 #add heartbeat configuration
 touch /etc/config/manager
 uci get manager.heartbeat || uci set manager.heartbeat='heartbeat'
+uci get manager.server || uci set manager.server='server'
 uci get manager.heartbeat.enabled || uci set manager.heartbeat.enabled='1'
-uci get manager.heartbeat.server || uci set manager.heartbeat.server='http://heartbeat.basicinside.de'
+uci get manager.heartbeat.server || uci set manager.server.url='http://heartbeat.basicinside.de'
 
 #function to print random integers
 random () {
