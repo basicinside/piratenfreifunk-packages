@@ -1,9 +1,22 @@
 #!/bin/sh
+
+ifaces=$1
+for i in $ifaces ; do
+	if [ -z $efaces ] ; then
+		efaces="$i"
+	else
+		efaces="$efaces|$i"
+	fi
+done
+[ -z $efaces ] && efaces=".*"
 logread -f | while read line ; do
-  if echo $line | grep -q DHCPACK ; then
-    machash=$(echo $line | cut -d ' ' -f 9 | md5sum | cut -d ' ' -f 1)
-    echo "$machash" >> /tmp/machashes
-  fi
+	mac=""
+	machash=""
+	if echo "$line" | egrep -q "DHCPACK\(($efaces)" ; then
+		mac=$(echo "$line" | sed -e 's/.*\(\([0-9A-Fa-f][0-9A-Fa-f]:\)\{5\}[0-9A-Fa-f][0-9A-Fa-f]\).*/\1/')
+		machash=$(echo "$mac" | md5sum | cut -d ' ' -f 1)
+		echo "$machash" >> /tmp/machashes
+	fi
 done &
 pid=$!
 echo $pid > /var/run/machash.pid
