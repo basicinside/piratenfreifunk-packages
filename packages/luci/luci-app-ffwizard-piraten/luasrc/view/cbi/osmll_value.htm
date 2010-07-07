@@ -32,7 +32,7 @@ $Id$
 					onclick="
 						document.getElementById('<%=cbid..".hideosm"%>').style.display='inline';
 						document.getElementById('<%=cbid..".displayosm"%>').style.display='none';
-						for(var i = 0; math.min(i, window.frames.length)!=window.frames.lengths; i++){
+						for(var i = 0; Math.min(i, window.frames.length)!=window.frames.lengths; i++){
 							if(frames[i].name=='<%=cbid..".iframe"%>'){								
 								document.getElementById('<%=cbid..".iframediv"%>').style.display='block';
 								frames[i].location.href='/luci-static/resources/OSMLatLon.htm';
