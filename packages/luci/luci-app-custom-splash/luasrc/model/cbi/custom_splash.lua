@@ -1,10 +1,4 @@
 --[[
-This file has been modified by
-Andreas Pittrich <andreas.pittrich@web.de>
-in behalf of the german pirate party (Piratenpartei)
-www.piratenpartei.de
-
-Original Disclaimer:
 -------
 LuCI - Lua Configuration Interface
 

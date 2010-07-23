@@ -20,7 +20,7 @@ define Package/luci-app-ffwizard-piraten
 endef
 
 define Package/luci-app-ffwizard-piraten/description
-  Freifunk Wizard for Pirat's
+  Freifunk Wizard for Pirates (Fear the pirate wizard!1)
 endef
 
 define Build/Prepare

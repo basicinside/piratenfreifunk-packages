@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uci batch <<-EOF
+	set freifunk.custom_splash='settings'
+	set freifunk.custom_splash.mode='disabled'
+	set freifunk.custom_splash.messages='disabled'
+		commit freifunk
+EOF
