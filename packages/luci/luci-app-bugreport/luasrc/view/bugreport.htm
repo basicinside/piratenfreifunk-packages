@@ -23,8 +23,8 @@ $Id$
 <%
 require("luci.sys")
 print(luci.util.libpath ())
-local version=luci.sys.exec('/sbin/pirate-version')
-local config=luci.sys.exec('/sbin/pirate-config')
+local version=luci.sys.exec('/sbin/get-version')
+local config=luci.sys.exec('/sbin/get-config')
 config=luci.util.trim(config)
 %>
 
