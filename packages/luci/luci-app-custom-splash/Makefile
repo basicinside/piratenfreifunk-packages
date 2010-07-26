@@ -16,7 +16,7 @@ define Package/luci-app-custom-splash
   SUBMENU:=Components
   TITLE:=Custom Splash Site
   DEPENDS+= \
-   +luci-web +luci-app-splash
+   +luci-web
 endef
 
 define Package/luci-app-custom-splash/description

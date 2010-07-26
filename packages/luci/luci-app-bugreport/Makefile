@@ -16,7 +16,7 @@ define Package/luci-app-bugreport
   SUBMENU:=Components
   TITLE:=Bugreport
   DEPENDS+= \
-   +luci-web +luci-app-splash +luci-app-heartbeat
+   +luci-web +luci-app-heartbeat
 endef
 
 define Package/luci-app-bugreport/description
