@@ -4,6 +4,11 @@ touch /etc/config/custom_splash
 uci batch <<-EOF
 	set custom_splash.main='settings'
 	set custom_splash.main.mode='disabled'
-	set custom_splash.ain.messages='disabled'
+	set custom_splash.main.disclaimer='enabled'
+	set custom_splash.main.messages='disabled'
 		commit custom_splash
 EOF
+mv /usr/lib/lua/luci/view/splash_splash/splash.htm /usr/lib/lua/luci/view/splash_splash/splash_htm.bak
+ln -s /usr/lib/lua/luci/view/custom_splash_replace.htm /usr/lib/lua/luci/view/splash_splash/splash_replace.htm
+mv /usr/lib/lua/luci/controller/splash/splash.htm /usr/lib/lua/luci/controller/splash/splash_lua.bak
+ln -s /usr/lib/lua/luci/controller/custom_splash_replace.lua /usr/lib/lua/luci/controller/splash/splash.lua
