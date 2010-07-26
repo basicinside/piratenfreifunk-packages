@@ -1,0 +1,77 @@
+<%
+	local fs = require "luci.fs"
+	local uci = require "luci.model.uci".cursor()
+
+	local use_custom_splash = uci:get("custom_splash", "main", "mode") == "enabled"
+	local use_standard_disclaimer = uci:get("custom_splash", "main", "disclaimer") == "enabled"
+	local use_messages = uci:get("custom_splash", "main", "messages")=="enabled"
+
+	custom_header=fs.readfile("/lib/uci/upload/custom_header.htm")
+	custom_footer=fs.readfile("/lib/uci/upload/custom_footer.htm")
+
+%>
+
+<% if use_custom_splash then %>
+	<%=custom_header%>
+<% else %>
+	<%+header%>
+<% end %>
+
+<% if use_standard_disclaimer then %>
+	<%+splash/splash%>
+<% end %>
+
+
+<div id="splash_form">
+<form method="get" action="<%=controller%>/splash/activate">
+<% if use_messages then %>
+	<table>
+		<tr>
+			<td>
+				Hier kannst Du dem Betreiber dieses Knotens eine öffentliche Nachricht hinterlassen<br />
+				<input type="text" value="0" readonly="readonly" size="3" maxlength="3" name="counter" id="counter" value="0">
+			</td>
+			<td>
+				<textarea
+					id="message"
+					name="message"
+					cols="35"
+					rows="4"
+	
+					onkeyup="
+						len = document.getElementById('message').value.length;
+						if(len>=140){
+							document.getElementById('counter').className = 'toolong';
+							document.getElementById('message').className = 'toolong';
+								if(len>140){
+									document.getElementById('message').value=document.getElementById('message').value.substr(0,140);
+									len=140;
+								}
+							}else{
+								document.getElementById('counter').className = '';
+								document.getElementById('message').className = '';
+							}	
+							document.getElementById('counter').value = len;
+					"
+				></textarea>
+			</td>
+			<td>
+<% end %> 
+				<input type="submit" value="<%:decline Decline%>" />
+				<input type="submit" name="accept" value="<%:accept Accept%>" />
+<% if use_messages then %>
+			</td>
+		</tr>
+	</table>
+	<div id="messages" class="cbi-section">
+		<%=fs.readfile("/lib/uci/upload/messages.htm")%>
+	</div>
+<% end %>
+</form>
+</div>
+
+<% if use_custom_splash then %>
+	<%=custom_footer%>
+<% else %>
+	<%+footer%>
+<% end %>
