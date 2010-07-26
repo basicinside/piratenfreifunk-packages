@@ -6,7 +6,7 @@ local config=luci.sys.exec('/sbin/get-config')
 config=luci.util.trim(config)
 
 local uci = require "luci.model.uci".cursor()
-bugreport_url = uci:get("custom_splash", "main", "mode")
+bugreport_url = uci:get("manager", "server", "url")
 %>
 
 <%=output%>
