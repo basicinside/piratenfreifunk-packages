@@ -1,8 +1,9 @@
 #!/bin/sh
 
+touch /etc/config/custom_splash
 uci batch <<-EOF
-	set freifunk.custom_splash='settings'
-	set freifunk.custom_splash.mode='disabled'
-	set freifunk.custom_splash.messages='disabled'
-		commit freifunk
+	set custom_splash.main='settings'
+	set custom_splash.main.mode='disabled'
+	set custom_splash.ain.messages='disabled'
+		commit custom_splash
 EOF

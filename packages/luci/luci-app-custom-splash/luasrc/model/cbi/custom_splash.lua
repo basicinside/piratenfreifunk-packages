@@ -2,9 +2,9 @@ luci.i18n.loadc("freifunk")
 local uci = require "luci.model.uci".cursor()
 local fs = require "luci.fs"
 
-m = Map("freifunk", "Custom Splash")
+m = Map("custom_splash", "Custom Splash")
 
-d = m:section(NamedSection, "custom_splash", "settings", "Custom Splash")
+d = m:section(NamedSection, "main", "settings", "Custom Splash")
 
 ----------------
 
@@ -13,6 +13,12 @@ active.widget="radio"
 active.size=1
 active:value("enabled", "Ja")
 active:value("disabled", "Nein")
+
+disclaimer=d:option(ListValue, "disclaimer", "Standarddisclaimer benutzer?")
+disclaimer.widget="radio"
+disclaimer.size=1
+disclaimer:value("enabled", "Ja")
+disclaimer:value("disabled", "Nein")
 
 msg=d:option(ListValue, "messages", "Nachrichten aktivieren?")
 msg.widget="radio"
