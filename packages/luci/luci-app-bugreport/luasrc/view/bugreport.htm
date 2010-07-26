@@ -26,11 +26,14 @@ print(luci.util.libpath ())
 local version=luci.sys.exec('/sbin/get-version')
 local config=luci.sys.exec('/sbin/get-config')
 config=luci.util.trim(config)
+
+local uci = require "luci.model.uci".cursor()
+bugreport_url = uci:get("manager", "sever", "url")
 %>
 
 <%=output%>
 
-<form method="post" action="http://heartbeat.piratenfreifunk.de/fehlerberichte/new">
+<form method="post" action="<%=bugreport_url>">
 	<div class="cbi-map">
 		<h2><a id="content" name="content">Heartbeat - Fehlerbericht</a></h2>
 		<div class="cbi-map-descr">Mit Hilfe dieses Formulars lassen sich Systemdaten an heartbeat.piratenfreifunk.de schicken. Nach Abschicken der Daten läßt sich ein Fehlerbericht erstellen.</div>
