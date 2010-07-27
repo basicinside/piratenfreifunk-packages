@@ -10,19 +10,19 @@ d = m:section(NamedSection, "main", "settings", "Custom Splash")
 
 active=d:option(ListValue, "mode", "Custom Splash benutzen?")
 active.widget="radio"
-active.size=1
+active.size=2
 active:value("enabled", "Ja")
 active:value("disabled", "Nein")
 
-disclaimer=d:option(ListValue, "disclaimer", "Standarddisclaimer benutzer?")
+disclaimer=d:option(ListValue, "disclaimer", "Standarddisclaimer benutzen?")
 disclaimer.widget="radio"
-disclaimer.size=1
+disclaimer.size=2
 disclaimer:value("enabled", "Ja")
 disclaimer:value("disabled", "Nein")
 
 msg=d:option(ListValue, "messages", "Nachrichten aktivieren?")
 msg.widget="radio"
-msg.size=1
+msg.size=2
 msg:value("enabled", "Ja")
 msg:value("disabled", "Nein")
 

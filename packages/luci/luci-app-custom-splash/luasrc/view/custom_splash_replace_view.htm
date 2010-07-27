@@ -25,14 +25,9 @@
 <div id="splash_form">
 <form method="get" action="<%=controller%>/splash/activate">
 <% if use_messages then %>
-	<table>
-		<tr>
-			<td>
-				Hier kannst Du dem Betreiber dieses Knotens eine öffentliche Nachricht hinterlassen<br />
-				<input type="text" value="0" readonly="readonly" size="3" maxlength="3" name="counter" id="counter" value="0">
-			</td>
-			<td>
-				<textarea
+		<div>Hier kannst Du dem Betreiber dieses Knotens eine öffentliche Nachricht hinterlassen:</div>
+		<input type="text" value="0" readonly="readonly" size="3" maxlength="3" name="counter" id="counter" value="0" /><br/>
+		<textarea
 					id="message"
 					name="message"
 					cols="35"
@@ -53,16 +48,11 @@
 							}	
 							document.getElementById('counter').value = len;
 					"
-				></textarea>
-			</td>
-			<td>
+			></textarea><br/>
 <% end %> 
 				<input type="submit" value="<%:decline Decline%>" />
 				<input type="submit" name="accept" value="<%:accept Accept%>" />
 <% if use_messages then %>
-			</td>
-		</tr>
-	</table>
 	<div id="messages" class="cbi-section">
 		<%=fs.readfile("/lib/uci/upload/messages.htm")%>
 	</div>

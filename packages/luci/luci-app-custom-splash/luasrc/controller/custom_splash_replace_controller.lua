@@ -40,7 +40,7 @@ function action_activate()
 		msg=luci.util.trim(msg)
 		if msg~="" then
 			local prev=fs.readfile("/lib/uci/upload/messages.htm") or ""
-			local new='\n<div class="entry">'..os.date().."<br/>"..msg.."\n </div> \n"..prev
+			local new='\n<div class="entry">\n\t<h4>'..os.date().."</h4>\n<p>\t"..msg.."</p>\n </div> \n"..prev
 			fs.writefile("/lib/uci/upload/messages.htm", new)
 		end
 		os.execute("luci-splash lease "..mac.." >/dev/null 2>&1")

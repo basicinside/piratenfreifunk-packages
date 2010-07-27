@@ -9,8 +9,8 @@ uci batch <<-EOF
 		commit custom_splash
 EOF
 
-mv 		/usr/lib/lua/luci/view/splash_splash/splash.htm 		/usr/lib/lua/luci/view/splash_splash/splash_htm.bak
-ln -s 	/usr/lib/lua/luci/view/custom_splash_replace.htm 		/usr/lib/lua/luci/view/splash_splash/splash.htm
+mv 		/usr/lib/lua/luci/view/splash_splash/splash.htm 			/usr/lib/lua/luci/view/splash_splash/splash_htm.bak
+ln -s 	/usr/lib/lua/luci/view/custom_splash_replace_view.htm 		/usr/lib/lua/luci/view/splash_splash/splash.htm
 
-mv 		/usr/lib/lua/luci/controller/splash/splash.lua 			/usr/lib/lua/luci/controller/splash/splash_lua.bak
-ln -s 	/usr/lib/lua/luci/controller/custom_splash_replace.lua 	/usr/lib/lua/luci/controller/splash/splash.lua
+mv 		/usr/lib/lua/luci/controller/splash/splash.lua 						/usr/lib/lua/luci/controller/splash/splash_lua.bak
+ln -s 	/usr/lib/lua/luci/controller/custom_splash_replace_controller.lua 	/usr/lib/lua/luci/controller/splash/splash.lua
