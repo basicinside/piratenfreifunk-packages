@@ -41,6 +41,11 @@ function action_activate()
 		if msg~="" then
 			local prev=fs.readfile("/lib/uci/upload/messages.htm") or ""
 			local new='\n<div class="entry">\n\t<h4>'..os.date().."</h4>\n<p>\t"..msg.."</p>\n </div> \n"..prev
+			local max = 6000
+			if new:len()>max then
+				local divstart, divend = new:find("</div>", max, true);
+				new = new:sub(0,divend).." [...]"
+			end
 			fs.writefile("/lib/uci/upload/messages.htm", new)
 		end
 		os.execute("luci-splash lease "..mac.." >/dev/null 2>&1")
