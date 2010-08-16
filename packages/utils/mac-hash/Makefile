@@ -37,6 +37,7 @@ endef
 
 define Package/mac-hash/install
 	$(CP) ./files/* $(1)/
+	chmod +x /sbin/heartbeat
 endef
 
 $(eval $(call BuildPackage,mac-hash))
