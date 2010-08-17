@@ -3,7 +3,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-custom-splash
-PKG_VERSION:=0.0.1
+PKG_VERSION:=0.0.2
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -15,8 +15,7 @@ define Package/luci-app-custom-splash
   CATEGORY:=LuCI
   SUBMENU:=Components
   TITLE:=Custom Splash Site
-  DEPENDS+= \
-   +luci-web
+  DEPENDS+= luci-app-splash
 endef
 
 define Package/luci-app-custom-splash/description
