@@ -38,7 +38,10 @@ define Build/Compile
 endef
 
 define Package/heartbeat/install
-	$(CP) ./files/* $(1)/
+	$(INSTALL_DIR) $(1)/sbin
+	$(INSTALL_BIN) ./files/sbin/heartbeat $(1)/sbin/heartbeat
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_DATA) ./files/etc/uci-defaults/* $(1)/etc/uci-defaults
 endef
 
 $(eval $(call BuildPackage,heartbeat))
