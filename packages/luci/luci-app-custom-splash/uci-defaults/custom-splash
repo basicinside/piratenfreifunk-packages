@@ -6,17 +6,17 @@ uci batch << EOF
 	set custom_splash.main.mode='disabled'
 	set custom_splash.main.disclaimer='enabled'
 	set custom_splash.main.messages='disabled'
-		commit custom_splash
+	commit custom_splash
 EOF
 
 #backup old splash file
 mv /usr/lib/lua/luci/view/splash_splash/splash.htm /usr/lib/lua/luci/view/splash_splash/splash.htm.bak
 
 #use new spash page
-mv /usr/lib/lua/luci/view/custom_splash_view.replace /usr/lib/lua/luci/view/splash_splash/splash.htm
+mv /usr/lib/lua/luci/view/splash_splash/custom-splash.htm /usr/lib/lua/luci/view/splash_splash/splash.htm
 
 #backup old splash file
 mv /usr/lib/lua/luci/controller/splash/splash.lua /usr/lib/lua/luci/controller/splash/splash.lua.bak
 
 #use new splash controller
-mv /usr/lib/lua/luci/controller/custom_splash_controller.replace /usr/lib/lua/luci/controller/splash/splash.lua
+mv /usr/lib/lua/luci/controller/splash/custom_splash.lua /usr/lib/lua/luci/controller/splash/splash.lua
