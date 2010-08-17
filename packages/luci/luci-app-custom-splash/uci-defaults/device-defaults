@@ -1,7 +1,7 @@
 #!/bin/sh
 
 touch /etc/config/custom_splash
-uci batch <<-EOF
+uci batch << EOF
 	set custom_splash.main='settings'
 	set custom_splash.main.mode='disabled'
 	set custom_splash.main.disclaimer='enabled'
@@ -9,9 +9,14 @@ uci batch <<-EOF
 		commit custom_splash
 EOF
 
-mv 		/usr/lib/lua/luci/view/splash_splash/splash.htm 			/usr/lib/lua/luci/view/splash_splash/splash_htm.bak
-ln -s	/usr/lib/lua/luci/view/custom_splash_replace_view.htm 		/usr/lib/lua/luci/view/splash_splash/splash.htm
+#backup old splash file
+mv /usr/lib/lua/luci/view/splash_splash/splash.htm /usr/lib/lua/luci/view/splash_splash/splash.htm.bak
 
-mv 		/usr/lib/lua/luci/controller/splash/splash.lua 						/usr/lib/lua/luci/controller/splash/splash_lua.bak
-# linking wont do the job here, cause luci would try to load the file twice, first the originial then the link, giving an error
-mv 	/usr/lib/lua/luci/controller/custom_splash_replace_controller.lua 	/usr/lib/lua/luci/controller/splash/splash.lua
+#use new spash page
+mv/usr/lib/lua/luci/view/custom_splash_view.replace /usr/lib/lua/luci/view/splash_splash/splash.htm
+
+#backup old splash file
+mv /usr/lib/lua/luci/controller/splash/splash.lua /usr/lib/lua/luci/controller/splash/splash.lua.bak
+
+#use new splash controller
+mv /usr/lib/lua/luci/controller/custom_splash_controller.replace /usr/lib/lua/luci/controller/splash/splash.lua
