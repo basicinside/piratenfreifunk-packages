@@ -36,10 +36,10 @@ define Build/Compile
 endef
 
 define Package/mac-hash/install
-        $(INSTALL_DIR) $(1)/sbin
-        $(INSTALL_BIN) ./files/sbin/machash $(1)/sbin/machash
-        $(INSTALL_DIR) $(1)/etc/init.d
-        $(INSTALL_BIN) ./files/etc/init.d/* $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/sbin
+	$(INSTALL_BIN) ./files/sbin/machash $(1)/sbin/machash
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/* $(1)/etc/init.d
 endef
 
 $(eval $(call BuildPackage,mac-hash))
