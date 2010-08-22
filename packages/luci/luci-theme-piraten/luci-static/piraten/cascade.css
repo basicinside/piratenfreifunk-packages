@@ -368,44 +368,48 @@
 			text-align:center;
 		}
 
-		#splash input[type=submit]{
+		#splash_form input[type=submit]{
 			font-size:200%;
 			margin:3px;
 			width:90%;
 		}
 
-		#splash input[type=text]{
+		#splash_form input[type=text]{
 			margin:0px;
 			margin-top:5px;
 			text-align:center;
 			width:auto;
 		}
 		
-		#splash textarea {
+		#splash_form textarea {
 			margin:0px;
 		}
 
-		#splash .toolong {
+		#splash_form counter {
+			margin:0.2em;
+		}
+
+		#splash_form .toolong {
 			color:#c00;
 			border: 2px solid #d00;
 		}
 
-		#splash table {
+		#splash_form table {
 			display:inline;
 		}
 		
-		#splash #messages {
+		#splash_form #messages {
 			margin-top:35px;
 			padding:10px 30%;
 		}
 
-		#splash #messages .entry{
+		#splash_form #messages .entry{
 			text-align:left;
 			border-bottom: 1px dashed #000;
 			padding:5px 7%;
 		}
 
-		#splash #messages .entry:first-line{
+		#splash_form #messages .entry:first-line{
 			font-weight:bold;
 		}
 
