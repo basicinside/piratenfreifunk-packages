@@ -26,17 +26,19 @@ endef
 
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
+	$(CP) ./luasrc $(PKG_BUILD_DIR)/
 endef
 
 define Build/Configure
 endef
 
 define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR)/luasrc
 endef
 
 define Package/luci-app-heartbeat/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
-	$(CP) ./luasrc/* $(1)/usr/lib/lua/luci
+	$(CP) $(PKG_BUILD_DIR)/luasrc/* $(1)/usr/lib/lua/luci
 endef
 
 $(eval $(call BuildPackage,luci-app-heartbeat))
