@@ -7,14 +7,14 @@ start() {
     config_get interface "heartbeat" "interface"
     for i in $interface ; do
 	ifname=$(uci -p /var/state get network.$i.ifname)
-	if [ -z $OPTS ] ; then
+	if [ -z "$OPTS" ] ; then
 		OPTS="$ifname"
 	else
 		OPTS="$OPTS $ifname"
 	fi
     done
-    echo $OPTS
-    start-stop-daemon -S -x /sbin/machash -- $OPTS
+    echo "Hearbeat machash listen on $OPTS"
+    start-stop-daemon -S -x /sbin/machash -- "$OPTS"
 }
 
 stop() {
@@ -24,4 +24,3 @@ stop() {
 reload() { 
     start-stop-daemon -K -s 1 -p /var/run/machash.pid
 } 
-
