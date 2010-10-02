@@ -498,6 +498,7 @@ end
 	<div id="stats">
 		<span><%=luci.version.distname%></span>
 		<span><%=luci.version.distversion%></span>
+		<span><%=luci.sys.exec("/sbin/get-version")%></span>
 		<span><b><%:hostname%>:</b> <%=hostname%></span>
 		<span><b><%:load%>:</b> <%="%.2f" % load1%> <%="%.2f" % load5%> <%="%.2f" % load15%></span>
 
