@@ -15,4 +15,4 @@ find_version()
 	fi
 }
 
-find_local_version
+find_version
