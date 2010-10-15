@@ -6,7 +6,7 @@ start() {
     config_load manager
     config_get interface "heartbeat" "interface"
     for i in $interface ; do
-	ifname=$(uci -p /var/state get network.$i.ifname)
+	ifname=$(uci -p /var/state get network.$i.ifname | cut -d ':' -f 1)	
 	if [ -z "$OPTS" ] ; then
 		OPTS="$ifname"
 	else
