@@ -11,7 +11,7 @@ if [ `uci get manager.heartbeat.enabled` == "1" ]; then
 	version=`sed -ne "s!.*$D4/$D2/$D2 $D2:$D2.*!\\1\\2\\3\\4\\5!p;t" /rom/etc/banner`
 	lat=`uci show olsrd|grep .lat=|cut -d = -f2`
 	lon=`uci show olsrd|grep .lon=|cut -d = -f2`
-	neighbors=`echo |nc 127.0.0.1 2006|grep YES|wc -l`
+	neighbors=`echo |wget -q -O - http://127.0.0.1:2006/all|grep YES|wc -l`
 	clients=`cat /tmp/machashes|sort|uniq|wc -l`
 
 	if  wget -s "$server/nodes/status/update?node_id=$node_id&name=$hostname&lat=$lat&lon=$lon&version=$version&neighbors=$neighbors&clients=$clients";  then
