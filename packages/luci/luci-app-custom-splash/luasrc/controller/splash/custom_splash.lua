@@ -4,12 +4,14 @@ local fs = require "luci.fs"
 
 function index()
 	entry({"admin", "services", "splash"}, cbi("splash/splash"), "Client-Splash")
+	assign({"mini", "services", "splash"}, {"admin", "services", "splash"}, "Client-Splash", 50)
 
 	node("splash").target = call("action_dispatch")
 	node("splash", "activate").target = call("action_activate")
 	node("splash", "splash").target   = template("splash_splash/splash")
 
 	entry({"admin", "status", "splash"}, call("action_status_admin"), "Client-Splash")
+	assign({"mini", "services", "splash_status"}, {"admin", "status", "splash"}, "Client-Splash-Status", 50)
 end
 
 function action_dispatch()
