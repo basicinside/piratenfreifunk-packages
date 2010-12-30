@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=heartbeat
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
@@ -18,9 +18,7 @@ define Package/heartbeat
   CATEGORY:=LuCI
   SUBMENU:=Freifunk
   TITLE:=Heartbeat
-  DEPENDS:=\
-  +node-id \
-  +mac-hash
+  DEPENDS+= +node-id +mac-hash
 endef
 
 define Package/heartbeat/description

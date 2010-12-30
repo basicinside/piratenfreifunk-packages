@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-theme-piraten
 PKG_VERSION:=0.0.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -15,7 +15,7 @@ define Package/luci-theme-piraten
   CATEGORY:=LuCI
   SUBMENU:=Themes
   TITLE:=Piraten Freifunk Theme
-  DEPENDS:=+luci-web
+  DEPENDS+=+luci-theme-base
 endef
 
 define Package/luci-theme-piraten/description

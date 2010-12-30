@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=piraten-utils
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
@@ -18,8 +18,7 @@ define Package/piraten-utils
   CATEGORY:=LuCI
   SUBMENU:=Freifunk
   TITLE:=PiratenUtils
-  DEPENDS:=\
-  +node-id
+  DEPENDS+= +node-id
 endef
 
 define Package/piraten-utils/description

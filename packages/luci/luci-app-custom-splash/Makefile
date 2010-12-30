@@ -13,9 +13,9 @@ include $(INCLUDE_DIR)/package.mk
 define Package/luci-app-custom-splash
   SECTION:=luci
   CATEGORY:=LuCI
-  SUBMENU:=Components
+  SUBMENU:=Applications
   TITLE:=Custom Splash Site
-  DEPENDS+= luci-app-splash
+  DEPENDS+=+luci-lib-web +luci-app-splash
 endef
 
 define Package/luci-app-custom-splash/description

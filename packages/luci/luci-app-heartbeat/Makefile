@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-heartbeat
 PKG_VERSION:=0.0.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -13,11 +13,9 @@ include $(INCLUDE_DIR)/package.mk
 define Package/luci-app-heartbeat
   SECTION:=luci
   CATEGORY:=LuCI
-  SUBMENU:=Components
+  SUBMENU:=Applications
   TITLE:=Piraten heartbeat
-  DEPENDS+= \
-   +luci-web +luci-app-splash \
-   +heartbeat
+  DEPENDS+= +luci-lib-web +heartbeat
 endef
 
 define Package/luci-app-heartbeat/description
