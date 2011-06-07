@@ -18,7 +18,7 @@ define Package/heartbeat
   CATEGORY:=LuCI
   SUBMENU:=Freifunk
   TITLE:=Heartbeat
-  DEPENDS+= +node-id +mac-hash
+  DEPENDS+= +node-id +mac-hash +iptables
 endef
 
 define Package/heartbeat/description
