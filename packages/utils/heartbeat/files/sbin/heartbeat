@@ -7,7 +7,7 @@ node_id=`uci get system.@system[0].nodeid`
 hostname=`uci get system.@system[0].hostname`
 D2='\([0-9]\{2\}\)'                                           
 D4='\([0-9]\{4\}\)'                                           
-version=`sed -ne "s!.*$D4/$D2/$D2 $D2:$D2.*!\\1\\2\\3\\4\\5!p;t" /rom/etc/banner`
+version=`sed -ne "s!.*$D4/$D2/$D2 $D2:$D2.*!\\1\\2\\3\\4\\5!p;t" /etc/banner`
 lat=`uci show olsrd|grep .lat=|cut -d = -f2`
 lon=`uci show olsrd|grep .lon=|cut -d = -f2`
 neighbors=`wget -q -O - http://127.0.0.1:2006/all|grep YES|wc -l`
