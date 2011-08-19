@@ -15,31 +15,36 @@ define Package/luci-app-bugreport
   CATEGORY:=LuCI
   SUBMENU:=Applications
   TITLE:=Bugreport
-  DEPENDS+=+luci-lib-web +luci-app-heartbeat
+# Uncomment to build package
+#  DEPENDS+=+luci-lib-web +luci-app-heartbeat
 endef
 
 define Package/luci-app-bugreport/description
-  Send a bugreport
+  Send a bugreport - outdated. 
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./luasrc $(PKG_BUILD_DIR)/
+# Uncomment to build package
+#	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./luasrc $(PKG_BUILD_DIR)/
 endef
 
 define Build/Configure
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR)/luasrc
+# Uncomment to build package
+#	$(MAKE) -C $(PKG_BUILD_DIR)/luasrc
 endef
 
 define Package/luci-app-bugreport/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view
-	$(CP) $(PKG_BUILD_DIR)/luasrc/controller/* $(1)/usr/lib/lua/luci/controller
-	$(CP) $(PKG_BUILD_DIR)/luasrc/view/* $(1)/usr/lib/lua/luci/view
-	$(CP) ./files/* $(1)/
+# Uncomment to build package
+#	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
+#	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view
+#	$(CP) $(PKG_BUILD_DIR)/luasrc/controller/* $(1)/usr/lib/lua/luci/controller
+#	$(CP) $(PKG_BUILD_DIR)/luasrc/view/* $(1)/usr/lib/lua/luci/view
+#	$(CP) ./files/* $(1)/
 endef
 
-$(eval $(call BuildPackage,luci-app-bugreport))
+# Uncomment to build package
+#$(eval $(call BuildPackage,luci-app-bugreport))
