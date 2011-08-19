@@ -26,7 +26,8 @@ define Package/piraten-utils/description
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
+# Uncomment to build package
+#	mkdir -p $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
@@ -36,7 +37,9 @@ define Build/Compile
 endef
 
 define Package/piraten-utils/install
-	$(CP) ./files/* $(1)/
+# Uncomment to build package
+#	$(CP) ./files/* $(1)/
 endef
 
-$(eval $(call BuildPackage,piraten-utils))
+# Uncomment to build package
+#$(eval $(call BuildPackage,piraten-utils))
