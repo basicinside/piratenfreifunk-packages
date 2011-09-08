@@ -1,6 +1,8 @@
 <%
 require("luci.sys")
+require("luci.tools.webadmin")
 local load1, load5, load15 = luci.sys.loadavg()
+local uptime = luci.sys.uptime()
 local request  = require("luci.dispatcher").context.path
 local category = request[1]
 local tree     = luci.dispatcher.node()
@@ -512,12 +514,12 @@ end
 	<div id="logo">
 	</div>
 	<div id="stats">
-		<span><%=luci.version.distname%></span>
-		<span><%=luci.version.distversion%></span>
+		<span><b><%:distname%>:</b> <%=luci.version.distname%></span>
+		<span><b><%:distversion%>:</b> <%=luci.version.distversion%></span>
 		<span><%=luci.sys.exec("/sbin/get-version")%></span>
 		<span><b><%:hostname%>:</b> <%=hostname%></span>
 		<span><b><%:load%>:</b> <%="%.2f" % load1%> <%="%.2f" % load5%> <%="%.2f" % load15%></span>
-
+		<span><b><%:uptime%>:</b> <%=luci.tools.webadmin.date_format(tonumber(uptime))%></span>
 	</div>
 	<div id="maincontent">
 
