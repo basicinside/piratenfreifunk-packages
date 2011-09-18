@@ -514,11 +514,12 @@ end
 	<div id="logo">
 	</div>
 	<div id="stats">
-		<span><b><%:distversion%>:</b> <%=luci.version.distversion%></span>
-		<span><%=luci.sys.exec("/sbin/get-version")%></span>
-		<span><b><%:hostname%>:</b> <%=hostname%></span>
-		<span><b><%:load%>:</b> <%="%.2f" % load1%> <%="%.2f" % load5%> <%="%.2f" % load15%></span>
-		<span><b><%:uptime%>:</b> <%=luci.tools.webadmin.date_format(tonumber(uptime))%></span>
+		<span><b><%:Distversion%>:</b> <%=luci.version.distversion%></span>
+		<span><b><%:Hostname%>:</b> <%=hostname%></span>
+		<span><b><%:Load%>:</b> <%="%.2f" % load1%> <%="%.2f" % load5%> <%="%.2f" % load15%></span>
+		<span><b><%:Uptime%>:</b> <%=luci.tools.webadmin.date_format(tonumber(uptime))%></span>
+		<span><b><%:Model%>:</b> <%=model%></span>
+		<span><b><%:Identifier%>:</b> <%=identifier%></span>
 	</div>
 	<div id="maincontent">
 
