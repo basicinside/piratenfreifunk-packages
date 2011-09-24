@@ -39,11 +39,11 @@ iptables -L|grep heartbeat ||
 PACKETS=$(iptables -L -vnx|grep "^Chain heartbeat" -A12|awk '{print $1}'|grep "[0-9]")
 BYTES=$(iptables -L -vnx|grep "^Chain heartbeat" -A12|awk '{print $2}'|grep "[0-9]")
 
-P_URL=`echo $PACKETS|awk '{print "i="$1"&ic="$2"&iu="$3"&it="$4"&io="$5"&if="$6"&is="$7"&im="$8"&ih="$9"&iw="$10"f="$11"&fc="$12"&fu="$13"&ft="$14"&fo="$15"&ff="$16"&fs="$17"&fm="$18"&fh="$19"&fw="$20"o="$21"&oc="$22"&ou="$23"&ot="$24"&oo="$25"&of="$26"&os="$27"&om="$28"&oh="$29"&ow="$30}'`
-B_URL=`echo $BYTES|awk '{print "i="$1"&ic="$2"&iu="$3"&it="$4"&io="$5"&if="$6"&is="$7"&im="$8"&ih="$9"&iw="$10"f="$11"&fc="$12"&fu="$13"&ft="$14"&fo="$15"&ff="$16"&fs="$17"&fm="$18"&fh="$19"&fw="$20"o="$21"&oc="$22"&ou="$23"&ot="$24"&oo="$25"&of="$26"&os="$27"&om="$28"&oh="$29"&ow="$30}'`
+P_URL=`echo $PACKETS|awk '{print "i="$1"&ic="$2"&iu="$3"&it="$4"&io="$5"&if="$6"&is="$7"&im="$8"&ih="$9"&iw="$10"&f="$11"&fc="$12"&fu="$13"&ft="$14"&fo="$15"&ff="$16"&fs="$17"&fm="$18"&fh="$19"&fw="$20"&o="$21"&oc="$22"&ou="$23"&ot="$24"&oo="$25"&of="$26"&os="$27"&om="$28"&oh="$29"&ow="$30}'`
+B_URL=`echo $BYTES|awk '{print "i="$1"&ic="$2"&iu="$3"&it="$4"&io="$5"&if="$6"&is="$7"&im="$8"&ih="$9"&iw="$10"&f="$11"&fc="$12"&fu="$13"&ft="$14"&fo="$15"&ff="$16"&fs="$17"&fm="$18"&fh="$19"&fw="$20"&o="$21"&oc="$22"&ou="$23"&ot="$24"&oo="$25"&of="$26"&os="$27"&om="$28"&oh="$29"&ow="$30}'`
 
 wget -s "$server/nodes/traffic_packets/?node_id=$node_id&$P_URL"
-wget -s "$server/nodes/traffic_bytes/?node_id=$node_id&$P_URL"
+wget -s "$server/nodes/traffic_bytes/?node_id=$node_id&$B_URL"
 
 iptables -Z heartbeat_INPUT
 iptables -Z heartbeat_FORWARD
