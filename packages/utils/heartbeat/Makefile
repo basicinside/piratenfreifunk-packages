@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=heartbeat
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
@@ -22,7 +22,7 @@ define Package/heartbeat
 endef
 
 define Package/heartbeat/description
-  Heartbeat polls a heartbeat server everyday which sends position, version, node-id, hostname, landesverband and crew, if choosen.
+  Heartbeat polls a heartbeat server everyday which sends position, lease_count, client_count, traffic_information and version, if choosen.
 endef
 
 define Build/Prepare
