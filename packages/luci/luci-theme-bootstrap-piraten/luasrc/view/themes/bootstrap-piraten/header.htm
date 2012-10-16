@@ -191,12 +191,12 @@ You may obtain a copy of the License at
   </header>
 
 
-<%- if luci.sys.user.getuser("root") and not luci.sys.user.getpasswd("root") then -%>
+<%- if luci.sys.process.info("uid") == 0 and luci.sys.user.getuser("root") and not luci.sys.user.getpasswd("root") then -%>
 <div class="container">
 	<div class="alert-message warning">
 		<h4><%:No password set!%></h4>
 		<%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%><br>
-        <a href="<%=pcdata(luci.dispatcher.build_url("admin/system/admin"))%>"><%:Go to password configuration...%></a>
+        <a href="<%=pcdata(luci.dispatcher.build_url("mini/system/passwd"))%>"><%:Go to password configuration...%></a>
 	</div>
 </div>
 <%- end -%>
